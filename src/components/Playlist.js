@@ -36,6 +36,7 @@ const Playlist = (props) => {
       <Track
         key={track.id}
         {...track}
+        setFirstSong={() => props.setFirstSong(i)}
       />
     );
   });

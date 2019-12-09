@@ -9,19 +9,24 @@ import "./styles/Track.css";
 
 class Track extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      favorite: false
+      favorite: false,
     }
   }
 
-  static propTypes = {
+   static propTypes = { 
     title: PropTypes.string,
     artist: PropTypes.string,
     playtime: PropTypes.string,
     albumart: PropTypes.string,
     favorite: PropTypes.bool,
   }
+
+  // onMoveToFirst = () => {
+  //   this.setState({first: true})
+  //   setFirstSong()
+  // }
 
   onBoxChecked = () => {
     // upon checking the box, this toggles the favoritism value
@@ -38,17 +43,17 @@ class Track extends Component {
   render() {
     return (
       <li className="track">
-        <img className="track--albumart" alt={`album art for ${this.title}`} src={this.albumart} />
-        <h3 className="track--title">{this.title}</h3>
+        <img className="track--albumart" alt={`album art for ${this.props.title}`} src={this.props.albumart} />
+        <h3 className="track--title">{this.props.title}</h3>
         <input
           type="checkbox"
           className="track--favorite"
-          onChange={this.onBoxChecked}
+          onChange={this.props.onBoxChecked}
         />
-        <p className="track--artist">{this.artist}</p>
-        <p className="track--playtime">{this.playtime}</p>
+        <p className="track--artist">{this.props.artist}</p>
+        <p className="track--playtime">{this.props.playtime}</p>
         <button
-          className="track--control track--to-top"
+          className="track--control track--to-top" onClick={this.state.setFirstSong}
           >
           <span role="img" aria-label="send to top">🔝</span>
         </button>
